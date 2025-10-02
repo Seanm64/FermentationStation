@@ -11,6 +11,41 @@ class Home extends StatelessWidget {
           title: Text("Home Page"),
           centerTitle: true,
       ),
+
+      // Drawer
+      drawer: Drawer(
+        width: 200.0,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const SizedBox(
+              height: 150.0,
+              child: DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.blueAccent,
+                ),
+                child: Text('Fermentation Station'),
+              ),
+            ),
+            ListTile(
+              title: const Text('Make A Brew'),
+              onTap: () {
+                // Close the drawer
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/addBrew');
+              },
+            ),
+            ListTile(
+              title: const Text('Configuration'),
+              onTap: () {
+                // Close the drawer
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
+
       body: Column(
         children: <Widget>[
           Center(

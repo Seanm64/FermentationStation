@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fermentation_station/structs/yeast_types.dart';
+import 'package:fermentation_station/structs/sugar_gravities.dart';
 
 class AddBrew extends StatefulWidget {
   const AddBrew({super.key});
@@ -10,19 +11,21 @@ class AddBrew extends StatefulWidget {
 
 class _AddBrewState extends State<AddBrew>
 {
+  List<SugarGravity> sugars_list = [];
   Map<String, Yeast>  yeast_map = {};
   String selected_yeast = '';
 
   void SelectYeast(String? value)
   {
     setState(() {
-      selected_yeast = value!;
+      selected_yeast = value!; // value comes from DropDownButton & can't be null
     });
   }
 
   @override
   void initState() {
     super.initState();
+    sugars_list = SugarsList().GetSugarsList();
     yeast_map = YeastMap().GetMap();
     selected_yeast = 'ICV D47';
   }
@@ -54,9 +57,15 @@ class _AddBrewState extends State<AddBrew>
           TextField(
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              hintText: 'Enter a search term',
+              hintText: 'Enter a Yeast Type',
             ),
           ),
+
+          // Selection of Fruits/Sugars
+          // Autocomplete(optionsBuilder: optionsBuilder)<String>(
+          //   displayStringForOption:
+          // ),
+
         ],
       ),
     );
