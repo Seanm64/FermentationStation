@@ -7,6 +7,8 @@ class Yeast {
 
 class YeastMap {
 
+  Map<String, Yeast> GetMap() {return yeast_map; }
+
 final Map<String, Yeast> yeast_map = {
   'RC 212':        Yeast(yeast_name: 'RC 212', max_abv: 16.0),
   'ICV D47':       Yeast(yeast_name: 'ICV D47', max_abv: 14.0),
