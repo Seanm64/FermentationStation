@@ -6,7 +6,11 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.blue[200]),
+      appBar: AppBar(
+          backgroundColor: Colors.blue[200],
+          title: Text("Home Page"),
+          centerTitle: true,
+      ),
       body: Column(
         children: <Widget>[
           Center(
@@ -17,7 +21,6 @@ class Home extends StatelessWidget {
               },
             ),
           ),
-          Center(child: Text('Home Area')),
         ],
       ),
     );
