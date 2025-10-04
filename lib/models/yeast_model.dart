@@ -5,11 +5,7 @@ class Yeast {
   Yeast({ required this.yeast_name, required this.max_abv });
 }
 
-class YeastMap {
-
-  Map<String, Yeast> GetMap() {return yeast_map; }
-
-final Map<String, Yeast> yeast_map = {
+final Map<String, Yeast> manual_yeast_map = {
   'RC 212':        Yeast(yeast_name: 'RC 212', max_abv: 16.0),
   'ICV D47':       Yeast(yeast_name: 'ICV D47', max_abv: 14.0),
   '71B-1122':      Yeast(yeast_name: '71B-1122', max_abv: 14.0),
@@ -19,9 +15,4 @@ final Map<String, Yeast> yeast_map = {
   'BM 4x4':        Yeast(yeast_name: 'BM 4x4', max_abv: 16.0),
   "Fleishmann's":  Yeast(yeast_name: "Fleishmann's", max_abv: 14.0),
   'Safale S04':    Yeast(yeast_name: 'Safale S04', max_abv: 11.0),
-
-
 };
-
-}
-
