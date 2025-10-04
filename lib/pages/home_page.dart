@@ -40,6 +40,7 @@ class Home extends StatelessWidget {
               onTap: () {
                 // Close the drawer
                 Navigator.pop(context);
+                Navigator.pushNamed(context, '/config');
               },
             ),
           ],

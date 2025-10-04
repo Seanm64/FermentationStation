@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 
 class AddSugarGravity extends ChangeNotifier {
   List<SugarGravity> _user_defined_sugar_gravities = <SugarGravity>[
+    SugarGravity(sugar_name: 'Honey', sugars_content_percent: 79.0),
+    SugarGravity(sugar_name: 'Sugar', sugars_content_percent: 100.0)
   ];
 
   List<SugarGravity> get user_sugar_gravities  => _user_defined_sugar_gravities;

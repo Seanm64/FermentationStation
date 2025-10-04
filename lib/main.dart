@@ -1,39 +1,25 @@
+import 'package:fermentation_station/models/add_sugar.dart';
+import 'package:fermentation_station/models/add_yeast.dart';
+import 'package:fermentation_station/pages/configurations.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 import 'pages/add_brew.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.amber),
-      body: Column(
-        children: <Widget>[
-          Center(
-            child: ElevatedButton(
-              child: const Text('Go To Home'),
-              onPressed: () {
-                Navigator.pushNamed(context, '/home');
-              },
-            ),
-          ),
-          SizedBox(height: 100.0),
-          Center(child: Text('LOADING AREA')),
-        ],
-      ),
-    );
-  }
-}
-
 void main() => runApp(
-    MaterialApp(
-      initialRoute: '/home',
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => AddYeast()),
+        ChangeNotifierProvider(create: (context) => AddSugarGravity()),
+      ],
+      child: MaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
       routes: {
-        '/': (context) => MyApp(),
-        '/home': (context) => Home(),
+        '/': (context) => Home(),
         '/addBrew': (context) => AddBrew(),
+        '/config': (context) => Configuration(),
       },
     )
+  )
 );

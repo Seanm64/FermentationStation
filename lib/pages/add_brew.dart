@@ -15,6 +15,7 @@ class _AddBrewState extends State<AddBrew>
   Widget build(BuildContext context)
   {
     return Scaffold(
+      appBar: AppBar(),
     );
   }
 }
