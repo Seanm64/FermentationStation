@@ -1,10 +1,8 @@
-import 'package:fermentation_station/models/add_yeast.dart';
-import 'package:fermentation_station/config_lists/sugar_gravity_consumer_list.dart';
+import 'package:fermentation_station/dialog_boxes/add_sugar_dialog_box.dart';
+import 'package:fermentation_station/dialog_boxes/add_yeast_dialog_box.dart';
 import 'package:fermentation_station/config_lists/yeast_consumer_list.dart';
-import 'package:fermentation_station/models/sugar_model.dart';
+import 'package:fermentation_station/config_lists/sugar_gravity_consumer_list.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:fermentation_station/models/yeast_model.dart';
 
 class Configuration extends StatefulWidget {
   const Configuration({super.key});
@@ -15,87 +13,20 @@ class Configuration extends StatefulWidget {
 
 class _ConfigurationState extends State<Configuration> {
 
-  final _yeast_form_controller = GlobalKey<FormState>();
-  final _sugar_form_controller = GlobalKey<FormState>();
-
-  Yeast create_a_yeast = Yeast(yeast_name: '',
-      max_abv: 0.0);
-  SugarGravity create_a_sugar = SugarGravity(sugar_name: '',
-      sugars_content_percent: 0.0);
-
   void _showCreateYeastDialog() {
     showDialog(
         context: context,
         builder: (context) {
-          return AlertDialog(
-            backgroundColor: Colors.blueGrey,
-            title: Text('Create Your Own Yeast'),
-            content: SingleChildScrollView(
-              child: Form(
-                key: _yeast_form_controller,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      maxLength: 30,
-                      onSaved: (value) {
-                        create_a_yeast.yeast_name = value!;
-                      },
-                      validator: (value) {
-                        if(value == null ||
-                           value.isEmpty)
-                        { return 'You must enter a valid value'; }
-                        return null;
-                      },
-                      decoration: const InputDecoration(
-                        label: Text('Enter Yeast Name'),
-                    ),
-                  ),
-                    TextFormField(
-                      maxLength: 6, keyboardType: TextInputType.number,
-                      validator: (value) {
-                        if(value == null ||
-                           value.isEmpty ||
-                           value.contains(RegExp(r'[A-Z][a-z]')))
-                        {
-                            return 'You must enter a number (ex. 1, 2, 10.4, 74.5)';
-                        }
+          return AddYeastDialogBox();
+        }
+    );
+  }
 
-                        if(double.parse(value) > 100.0) {
-                          return 'Number must be <= 100.0';
-                        }
-                        if(double.parse(value) < 0.0) {
-                          return 'Number must be >= to 0.0';
-                        }
-
-                        return null;
-                      },
-                      onSaved: (value) {
-                        create_a_yeast.max_abv = double.parse(value!);
-                      },
-                      decoration: const InputDecoration(
-                          label: Text('Strain Max ABV count')
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    FilledButton(
-                      onPressed: () {
-                        if (_yeast_form_controller.currentState!.validate())
-                        {
-                          _yeast_form_controller.currentState!.save();
-                          context.read<AddYeast>().addYeast(create_a_yeast);
-
-                         _yeast_form_controller.currentState!.reset();
-                         Navigator.pop(context);
-                        }
-                      },
-                      child: const Text('Create Yeast'),
-                      
-                    ),
-                  ],
-                ),
-              )
-            ),
-          );
+  void _showCreateSugarDialog() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AddSugarDialogBox();
         }
     );
   }
@@ -149,7 +80,7 @@ class _ConfigurationState extends State<Configuration> {
                     child: const Text("Add Yeast"),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: _showCreateSugarDialog,
                   child: const Text("Add Sugar"),
                 )
               ],
