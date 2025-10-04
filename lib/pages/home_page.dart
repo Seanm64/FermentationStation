@@ -1,7 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:fermentation_station/definitions/hive_boxes.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Home extends StatefulWidget {
+  Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+
+  @override
+  @override
+  void initState() {
+    super.initState();
+
+    Hive.openBox(kUserCreatedYeastBox).then((_yeast_box) {
+      
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
