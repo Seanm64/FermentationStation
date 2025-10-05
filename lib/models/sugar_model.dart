@@ -1,8 +1,16 @@
-class SugarGravity {
-  String sugar_name;
-  double sugars_content_percent;
+import 'package:hive/hive.dart';
 
+part 'sugar_model.g.dart';
+
+@HiveType(typeId: 2)
+class SugarGravity {
   SugarGravity({ required this.sugar_name, required this.sugars_content_percent });
+
+  @HiveField(0)
+  String sugar_name;
+
+  @HiveField(1)
+  double sugars_content_percent;
 }
 
 final List<SugarGravity> manual_sugar_gravities_list = <SugarGravity> [

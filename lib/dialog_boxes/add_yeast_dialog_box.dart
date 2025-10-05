@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
 import 'package:fermentation_station/models/add_yeast.dart';
 import 'package:fermentation_station/models/yeast_model.dart';
 import 'package:fermentation_station/definitions/hive_boxes.dart';
-import 'package:hive/hive.dart';
-import 'package:provider/provider.dart';
 
 class AddYeastDialogBox extends StatefulWidget {
   AddYeastDialogBox({super.key});
@@ -13,9 +13,9 @@ class AddYeastDialogBox extends StatefulWidget {
 }
 
 class _AddYeastDialogBoxState extends State<AddYeastDialogBox> {
-  final _yeast_form_controller = GlobalKey<FormState>();
-
   Box? _yeastBox;
+
+  final _yeast_form_controller = GlobalKey<FormState>();
 
   Yeast create_a_yeast = Yeast(yeast_name: '',
       max_abv: 0.0);
@@ -92,8 +92,6 @@ class _AddYeastDialogBoxState extends State<AddYeastDialogBox> {
 
                       _yeastBox!.put(create_a_yeast.yeast_name,
                           create_a_yeast);
-
-                      print('Yeast Box.put() yeast: ${_yeastBox!.get(create_a_yeast.yeast_name)}');
 
                       _yeast_form_controller.currentState!.reset();
                       Navigator.pop(context);

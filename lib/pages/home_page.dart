@@ -1,10 +1,11 @@
-import 'package:fermentation_station/models/yeast_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:fermentation_station/definitions/hive_boxes.dart';
 import 'package:provider/provider.dart';
-
-import '../models/add_yeast.dart';
+import 'package:fermentation_station/definitions/hive_boxes.dart';
+import 'package:fermentation_station/models/add_sugar.dart';
+import 'package:fermentation_station/models/add_yeast.dart';
+import 'package:fermentation_station/models/yeast_model.dart';
+import 'package:fermentation_station/models/sugar_model.dart';
 
 class Home extends StatefulWidget {
   Home({super.key});
@@ -19,16 +20,22 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
 
-    print('Home Area initState()');
-
+    // Put all of the user defined Yeast's into the provider
     Hive.openBox(kUserCreatedYeastBox).then((_yeast_box) {
-      print('Opened Yeastbox');
       for(var key in _yeast_box.keys)
       {
-        Yeast yeast = _yeast_box.getAt(key);
+        Yeast yeast = _yeast_box.get(key);
         context.read<AddYeast>().addYeast(yeast);
-        print('Box.get yeast: ${yeast.yeast_name}');
       }
+
+      // Put all of the user defined Sugar's into the provider
+      Hive.openBox(kUserCreatedSugarGravitiesBox).then((_sugar_box) {
+        for(var key in _sugar_box.keys)
+        {
+          SugarGravity sugar = _sugar_box.get(key);
+          context.read<AddSugarGravity>().addSugarGravity(sugar);
+        }
+      });
     });
   }
 
