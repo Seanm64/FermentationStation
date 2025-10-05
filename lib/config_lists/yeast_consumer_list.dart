@@ -22,6 +22,7 @@ class _YeastConsumerListState extends State<YeastConsumerList> {
                   ingredient_name: yeast.user_yeast[index].yeast_name,
                   description: '',
                   data_value: yeast.user_yeast[index].max_abv,
+                  card_type: CardType.eYeastCard,
                 );
               }
           );

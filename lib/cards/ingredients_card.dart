@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+enum CardType {
+  eYeastCard,
+  eSugarGravityCard
+}
 
 class IngredientsCard extends StatelessWidget {
   const IngredientsCard({
@@ -7,11 +11,13 @@ class IngredientsCard extends StatelessWidget {
     required this.ingredient_name,
     required this.description,
     required this.data_value,
+    required this.card_type
   });
 
   final String ingredient_name;
   final String description;
   final double data_value;
+  final CardType card_type;
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +28,18 @@ class IngredientsCard extends StatelessWidget {
         child: Column(
             children: <Widget>[
               ListTile(
-                // leading: Icon(Icons.arrow_drop_down_circle),
                 title: Text('${ingredient_name}',
                 style: TextStyle(
                   // fontSize: 12
                 ),
                 ),
-                subtitle: Text('ABV: ${data_value}',
+                subtitle: Text(
+                  card_type == CardType.eYeastCard ? 'ABV: ${data_value}' :
+                  'Sugar %: ${data_value}',
                   style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                ),trailing: GestureDetector(
+                  onTap: () {},
+                  child: Icon(Icons.delete),
                 ),
               ),
             ],

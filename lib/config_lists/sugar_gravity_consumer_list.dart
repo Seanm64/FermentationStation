@@ -22,6 +22,7 @@ class _SuagrConsumerListState extends State<SugarConsumerList> {
                   ingredient_name: sugar.user_sugar_gravities[index].sugar_name,
                   description: '',
                   data_value: sugar.user_sugar_gravities[index].sugars_content_percent,
+                  card_type: CardType.eSugarGravityCard,
                 );
               }
           );
