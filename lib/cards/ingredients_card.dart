@@ -16,16 +16,25 @@ class IngredientsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
-      child: Card(
-        margin: EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0.0),
-        child: Text(
-          ingredient_name,
-          style: TextStyle(
-            fontSize: 18,
-          ),
+      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
+      child:  Card(
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+            children: <Widget>[
+              ListTile(
+                // leading: Icon(Icons.arrow_drop_down_circle),
+                title: Text('${ingredient_name}',
+                style: TextStyle(
+                  // fontSize: 12
+                ),
+                ),
+                subtitle: Text('ABV: ${data_value}',
+                  style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                ),
+              ),
+            ],
         ),
-      ),
+    ),
     );
   }
 }
