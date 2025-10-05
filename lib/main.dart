@@ -8,10 +8,15 @@ import 'pages/home_page.dart';
 import 'pages/add_brew.dart';
 import 'pages/configurations.dart';
 
+import 'package:fermentation_station/models/yeast_model.g.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final documentsDir = await getApplicationDocumentsDirectory();
+
+  // Register the generated adapter
   Hive.init(documentsDir.path);
+  Hive.registerAdapter(YeastAdapter());
 
   runApp(
       MultiProvider(

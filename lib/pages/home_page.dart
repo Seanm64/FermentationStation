@@ -1,6 +1,10 @@
+import 'package:fermentation_station/models/yeast_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:fermentation_station/definitions/hive_boxes.dart';
+import 'package:provider/provider.dart';
+
+import '../models/add_yeast.dart';
 
 class Home extends StatefulWidget {
   Home({super.key});
@@ -12,12 +16,19 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   @override
-  @override
   void initState() {
     super.initState();
 
+    print('Home Area initState()');
+
     Hive.openBox(kUserCreatedYeastBox).then((_yeast_box) {
-      
+      print('Opened Yeastbox');
+      for(var key in _yeast_box.keys)
+      {
+        Yeast yeast = _yeast_box.getAt(key);
+        context.read<AddYeast>().addYeast(yeast);
+        print('Box.get yeast: ${yeast.yeast_name}');
+      }
     });
   }
 

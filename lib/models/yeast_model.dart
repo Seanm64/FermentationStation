@@ -1,8 +1,16 @@
-class Yeast {
-  String yeast_name;
-  double max_abv;
+import 'package:hive/hive.dart';
 
+part 'yeast_model.g.dart';
+
+@HiveType(typeId: 1)
+class Yeast {
   Yeast({ required this.yeast_name, required this.max_abv });
+
+  @HiveField(0)
+  String yeast_name;
+
+  @HiveField(2)
+  double max_abv;
 }
 
 final Map<String, Yeast> manual_yeast_map = {

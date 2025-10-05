@@ -3,4 +3,4 @@
 
 final String kUserCreatedYeastBox = "user_yeast_box"; // DO NOT MODIFY
 final String kUserCreatedSugarGravitiesBox = "user_sugar_gravity_box"; // DO NOT MODIFY
-final String kUserBrewBox = "user_brew_box"; // DO NOT MODIFY
+// final String kUserBrewBox = "user_brew_box"; // DO NOT MODIFY
