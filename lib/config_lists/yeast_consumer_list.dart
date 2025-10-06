@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:fermentation_station/models/add_yeast.dart';
+import 'package:fermentation_station/models/yeast_provider.dart';
 import 'package:fermentation_station/cards/ingredients_card.dart';
 
 class YeastConsumerList extends StatelessWidget {

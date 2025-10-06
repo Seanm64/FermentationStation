@@ -2,31 +2,31 @@ import 'package:fermentation_station/definitions/hive_boxes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:hive/hive.dart';
-import 'package:fermentation_station/models/add_sugar.dart';
-import 'package:fermentation_station/models/sugar_model.dart';
+import 'package:fermentation_station/models/ingredient_provider.dart';
+import 'package:fermentation_station/models/ingredient_model.dart';
 
-class AddSugarDialogBox extends StatefulWidget {
-  AddSugarDialogBox({super.key});
+class AddIngredientDialogBox extends StatefulWidget {
+  AddIngredientDialogBox({super.key});
 
   @override
-  State<AddSugarDialogBox> createState() => _AddSugarDialogBoxState();
+  State<AddIngredientDialogBox> createState() => _AddIngredientDialogBoxState();
 }
 
-class _AddSugarDialogBoxState extends State<AddSugarDialogBox> {
-  Box? _sugarBox;
+class _AddIngredientDialogBoxState extends State<AddIngredientDialogBox> {
+  Box? _ingredientsBox;
 
-  final _sugar_form_controller = GlobalKey<FormState>();
+  final _ingredients_form_controller = GlobalKey<FormState>();
 
-  SugarGravity create_a_sugar = SugarGravity(sugar_name: '',
+  Ingredient create_an_ingredient = Ingredient(ingredient_name: '',
     sugars_content_percent: 0.0);
 
   @override
   void initState() {
     super.initState();
 
-    Hive.openBox(kUserCreatedSugarGravitiesBox).then((_box) {
+    Hive.openBox(kUserCreatedIngredientsBox).then((_box) {
       setState(() {
-        _sugarBox = _box;
+        _ingredientsBox = _box;
       });
     });
   }
@@ -35,16 +35,16 @@ class _AddSugarDialogBoxState extends State<AddSugarDialogBox> {
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: Colors.blueGrey,
-      title: Text('Create Your Own Yeast'),
+      title: Text('Create Your Own Ingredient'),
       content: SingleChildScrollView(
           child: Form(
-            key: _sugar_form_controller,
+            key: _ingredients_form_controller,
             child: Column(
               children: [
                 TextFormField(
                   maxLength: 30,
                   onSaved: (value) {
-                    create_a_sugar.sugar_name = value!;
+                    create_an_ingredient.ingredient_name = value!;
                   },
                   validator: (value) {
                     if(value == null ||
@@ -53,7 +53,7 @@ class _AddSugarDialogBoxState extends State<AddSugarDialogBox> {
                     return null;
                   },
                   decoration: const InputDecoration(
-                    label: Text('Enter Sugar Name'),
+                    label: Text('Enter Ingredient Name'),
                   ),
                 ),
                 TextFormField(
@@ -76,7 +76,7 @@ class _AddSugarDialogBoxState extends State<AddSugarDialogBox> {
                     return null;
                   },
                   onSaved: (value) {
-                    create_a_sugar.sugars_content_percent = double.parse(value!);
+                    create_an_ingredient.sugars_content_percent = double.parse(value!);
                   },
                   decoration: const InputDecoration(
                       label: Text('Enter Sugar Content %')
@@ -85,19 +85,19 @@ class _AddSugarDialogBoxState extends State<AddSugarDialogBox> {
                 const SizedBox(height: 20),
                 FilledButton(
                   onPressed: () {
-                    if (_sugar_form_controller.currentState!.validate())
+                    if (_ingredients_form_controller.currentState!.validate())
                     {
-                      _sugar_form_controller.currentState!.save();
-                      context.read<SugarGravityProvider>().addSugarGravity(create_a_sugar);
+                      _ingredients_form_controller.currentState!.save();
+                      context.read<IngredientProvider>().addIngredient(create_an_ingredient);
 
-                      _sugarBox!.put(create_a_sugar.sugar_name,
-                          create_a_sugar);
+                      _ingredientsBox!.put(create_an_ingredient.ingredient_name,
+                          create_an_ingredient);
 
-                      _sugar_form_controller.currentState!.reset();
+                      _ingredients_form_controller.currentState!.reset();
                       Navigator.pop(context);
                     }
                   },
-                  child: const Text('Create Yeast'),
+                  child: const Text('Create Ingredient'),
 
                 ),
               ],

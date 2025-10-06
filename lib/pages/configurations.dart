@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
-import 'package:fermentation_station/models/add_sugar.dart';
-import 'package:fermentation_station/models/add_yeast.dart';
-import 'package:fermentation_station/dialog_boxes/add_sugar_dialog_box.dart';
+import 'package:fermentation_station/models/ingredient_provider.dart';
+import 'package:fermentation_station/models/yeast_provider.dart';
+import 'package:fermentation_station/dialog_boxes/add_ingredient_box.dart';
 import 'package:fermentation_station/dialog_boxes/add_yeast_dialog_box.dart';
 import 'package:fermentation_station/config_lists/yeast_consumer_list.dart';
-import 'package:fermentation_station/config_lists/sugar_gravity_consumer_list.dart';
+import 'package:fermentation_station/config_lists/ingredient_consumer_list.dart';
 
 import 'package:fermentation_station/definitions/hive_boxes.dart';
 
@@ -20,7 +20,7 @@ class Configuration extends StatefulWidget {
 class _ConfigurationState extends State<Configuration> {
 
   Box? _yeastBox;
-  Box? _sugarBox;
+  Box? _ingredientsBox;
 
   void DeleteYeastFunction(String key) async {
     var yeast_obj = _yeastBox!.get(key);
@@ -28,10 +28,10 @@ class _ConfigurationState extends State<Configuration> {
     context.read<YeastProvider>().removeYeast(yeast_obj);
   }
 
-  void DeleteSugarFunction(String key) async {
-    var sugar_grav_obj = _sugarBox!.get(key);
-    await _sugarBox!.delete(key);
-    context.read<SugarGravityProvider>().removeSugarGravity(sugar_grav_obj);
+  void DeleteIngredientFunction(String key) async {
+    var ingredient_obj = _ingredientsBox!.get(key);
+    await _ingredientsBox!.delete(key);
+    context.read<IngredientProvider>().removeIngredient(ingredient_obj);
   }
 
   void _showCreateYeastDialog() {
@@ -43,11 +43,11 @@ class _ConfigurationState extends State<Configuration> {
     );
   }
 
-  void _showCreateSugarDialog() {
+  void _showCreateIngredientDialog() {
     showDialog(
         context: context,
         builder: (context) {
-          return AddSugarDialogBox();
+          return AddIngredientDialogBox();
         }
     );
   }
@@ -56,9 +56,9 @@ class _ConfigurationState extends State<Configuration> {
   void initState() {
     super.initState();
 
-    Hive.openBox(kUserCreatedSugarGravitiesBox).then((_box) {
+    Hive.openBox(kUserCreatedIngredientsBox).then((_box) {
       setState(() {
-        _sugarBox = _box;
+        _ingredientsBox = _box;
       });
     });
     Hive.openBox(kUserCreatedYeastBox).then((_box) {
@@ -89,7 +89,7 @@ class _ConfigurationState extends State<Configuration> {
                 ),
               ),
               Text(
-                'Sugars',
+                'Ingredients',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -103,7 +103,7 @@ class _ConfigurationState extends State<Configuration> {
                   child: YeastConsumerList(deleteFunction: DeleteYeastFunction,)
                 ),
                 Flexible(
-                  child: SugarConsumerList(deleteFunction: DeleteSugarFunction,)
+                  child: IngredientsConsumerList(deleteFunction: DeleteIngredientFunction,)
                 ),
               ],
             ),
@@ -117,8 +117,8 @@ class _ConfigurationState extends State<Configuration> {
                     child: const Text("Add Yeast"),
                 ),
                 ElevatedButton(
-                  onPressed: _showCreateSugarDialog,
-                  child: const Text("Add Sugar"),
+                  onPressed: _showCreateIngredientDialog,
+                  child: const Text("Add Ingredient"),
                 )
               ],
             ),

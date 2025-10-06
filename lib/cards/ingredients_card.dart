@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 enum CardType {
   eYeastCard,
-  eSugarGravityCard
+  eIngredientCard
 }
 
 class IngredientsCard extends StatelessWidget {

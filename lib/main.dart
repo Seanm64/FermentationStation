@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fermentation_station/models/yeast_model.dart';
-import 'package:fermentation_station/models/sugar_model.dart';
-import 'package:fermentation_station/models/add_sugar.dart';
-import 'package:fermentation_station/models/add_yeast.dart';
+import 'package:fermentation_station/models/ingredient_model.dart';
+import 'package:fermentation_station/models/ingredient_provider.dart';
+import 'package:fermentation_station/models/yeast_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
@@ -17,13 +17,13 @@ void main() async {
   // Register the generated adapter
   Hive.init(documentsDir.path);
   Hive.registerAdapter<Yeast>(YeastAdapter());
-  Hive.registerAdapter<SugarGravity>(SugarGravityAdapter());
+  Hive.registerAdapter<Ingredient>(IngredientAdapter());
 
   runApp(
       MultiProvider(
           providers: [
             ChangeNotifierProvider(create: (context) => YeastProvider()),
-            ChangeNotifierProvider(create: (context) => SugarGravityProvider()),
+            ChangeNotifierProvider(create: (context) => IngredientProvider()),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:fermentation_station/definitions/hive_boxes.dart';
 import 'package:provider/provider.dart';
-import 'package:fermentation_station/models/add_yeast.dart';
+import 'package:fermentation_station/models/yeast_provider.dart';
 import 'package:fermentation_station/models/yeast_model.dart';
 
 class AddYeastDialogBox extends StatefulWidget {
