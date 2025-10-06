@@ -2,7 +2,7 @@ import 'package:fermentation_station/models/sugar_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-class AddSugarGravity extends ChangeNotifier {
+class SugarGravityProvider extends ChangeNotifier {
   List<SugarGravity> _user_defined_sugar_gravities = <SugarGravity>[
     SugarGravity(sugar_name: 'Honey', sugars_content_percent: 79.0),
     SugarGravity(sugar_name: 'Sugar', sugars_content_percent: 100.0)

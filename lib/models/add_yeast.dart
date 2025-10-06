@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fermentation_station/models/yeast_model.dart';
 
-class AddYeast extends ChangeNotifier {
+class YeastProvider extends ChangeNotifier {
   List<Yeast> _user_defined_yeast = <Yeast>[
     Yeast(yeast_name: 'RC 212', max_abv: 16.0),
     Yeast(yeast_name: 'ICV D47', max_abv: 14.0),

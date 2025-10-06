@@ -22,8 +22,8 @@ void main() async {
   runApp(
       MultiProvider(
           providers: [
-            ChangeNotifierProvider(create: (context) => AddYeast()),
-            ChangeNotifierProvider(create: (context) => AddSugarGravity()),
+            ChangeNotifierProvider(create: (context) => YeastProvider()),
+            ChangeNotifierProvider(create: (context) => SugarGravityProvider()),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

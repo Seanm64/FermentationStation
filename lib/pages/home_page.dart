@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
       for(var key in _yeast_box.keys)
       {
         Yeast yeast = _yeast_box.get(key);
-        context.read<AddYeast>().addYeast(yeast);
+        context.read<YeastProvider>().addYeast(yeast);
       }
 
       // Put all of the user defined Sugar's into the provider
@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
         for(var key in _sugar_box.keys)
         {
           SugarGravity sugar = _sugar_box.get(key);
-          context.read<AddSugarGravity>().addSugarGravity(sugar);
+          context.read<SugarGravityProvider>().addSugarGravity(sugar);
         }
       });
     });

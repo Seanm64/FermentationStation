@@ -88,7 +88,7 @@ class _AddSugarDialogBoxState extends State<AddSugarDialogBox> {
                     if (_sugar_form_controller.currentState!.validate())
                     {
                       _sugar_form_controller.currentState!.save();
-                      context.read<AddSugarGravity>().addSugarGravity(create_a_sugar);
+                      context.read<SugarGravityProvider>().addSugarGravity(create_a_sugar);
 
                       _sugarBox!.put(create_a_sugar.sugar_name,
                           create_a_sugar);

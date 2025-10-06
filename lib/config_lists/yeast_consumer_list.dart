@@ -10,7 +10,7 @@ class YeastConsumerList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AddYeast>(
+    return Consumer<YeastProvider>(
         builder: (context, yeast, child) {
           return ListView.builder(
               itemCount: yeast.user_yeast.length,

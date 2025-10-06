@@ -88,7 +88,7 @@ class _AddYeastDialogBoxState extends State<AddYeastDialogBox> {
                     if (_yeast_form_controller.currentState!.validate())
                     {
                       _yeast_form_controller.currentState!.save();
-                      context.read<AddYeast>().addYeast(create_a_yeast);
+                      context.read<YeastProvider>().addYeast(create_a_yeast);
 
                       _yeastBox!.put(create_a_yeast.yeast_name,
                           create_a_yeast);

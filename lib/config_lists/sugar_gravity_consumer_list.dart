@@ -10,7 +10,7 @@ class SugarConsumerList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AddSugarGravity>(
+    return Consumer<SugarGravityProvider>(
         builder: (context, sugar, child) {
           return ListView.builder(
               itemCount: sugar.user_sugar_gravities.length,

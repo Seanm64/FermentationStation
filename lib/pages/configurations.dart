@@ -25,13 +25,13 @@ class _ConfigurationState extends State<Configuration> {
   void DeleteYeastFunction(String key) async {
     var yeast_obj = _yeastBox!.get(key);
     await _yeastBox!.delete(key);
-    context.read<AddYeast>().removeYeast(yeast_obj);
+    context.read<YeastProvider>().removeYeast(yeast_obj);
   }
 
   void DeleteSugarFunction(String key) async {
     var sugar_grav_obj = _sugarBox!.get(key);
     await _sugarBox!.delete(key);
-    context.read<AddSugarGravity>().removeSugarGravity(sugar_grav_obj);
+    context.read<SugarGravityProvider>().removeSugarGravity(sugar_grav_obj);
   }
 
   void _showCreateYeastDialog() {
