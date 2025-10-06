@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:fermentation_station/models/add_yeast.dart';
 import 'package:fermentation_station/cards/ingredients_card.dart';
-import 'package:provider/provider.dart';
 
-class YeastConsumerList extends StatefulWidget {
-  const YeastConsumerList({super.key});
+class YeastConsumerList extends StatelessWidget {
+  const YeastConsumerList( {super.key, required this.deleteFunction} );
 
-  @override
-  State<YeastConsumerList> createState() => _YeastConsumerListState();
-}
+  final Function(String key) deleteFunction;
 
-class _YeastConsumerListState extends State<YeastConsumerList> {
   @override
   Widget build(BuildContext context) {
     return Consumer<AddYeast>(
@@ -23,6 +20,7 @@ class _YeastConsumerListState extends State<YeastConsumerList> {
                   description: '',
                   data_value: yeast.user_yeast[index].max_abv,
                   card_type: CardType.eYeastCard,
+                  deleteFunction: deleteFunction,
                 );
               }
           );

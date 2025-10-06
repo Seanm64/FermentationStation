@@ -3,14 +3,11 @@ import 'package:fermentation_station/models/add_sugar.dart';
 import 'package:fermentation_station/cards/ingredients_card.dart';
 import 'package:provider/provider.dart';
 
-class SugarConsumerList extends StatefulWidget {
-  const SugarConsumerList({super.key});
+class SugarConsumerList extends StatelessWidget {
+  const SugarConsumerList({super.key, required this.deleteFunction});
 
-  @override
-  State<SugarConsumerList> createState() => _SuagrConsumerListState();
-}
+  final Function(String key) deleteFunction;
 
-class _SuagrConsumerListState extends State<SugarConsumerList> {
   @override
   Widget build(BuildContext context) {
     return Consumer<AddSugarGravity>(
@@ -23,6 +20,7 @@ class _SuagrConsumerListState extends State<SugarConsumerList> {
                   description: '',
                   data_value: sugar.user_sugar_gravities[index].sugars_content_percent,
                   card_type: CardType.eSugarGravityCard,
+                  deleteFunction: deleteFunction,
                 );
               }
           );
