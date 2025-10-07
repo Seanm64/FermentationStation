@@ -64,6 +64,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             ListTile(
+              leading: Icon(Icons.wine_bar_outlined),
               title: const Text('Make A Brew'),
               onTap: () {
                 // Close the drawer
@@ -72,6 +73,7 @@ class _HomeState extends State<Home> {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.settings),
               title: const Text('Configuration'),
               onTap: () {
                 // Close the drawer
