@@ -15,7 +15,15 @@ class _AddBrewState extends State<AddBrew>
   Widget build(BuildContext context)
   {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+      ),
+      body: Text('data'),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add,
+          ),
+      ),
     );
   }
 }

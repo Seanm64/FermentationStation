@@ -75,7 +75,7 @@ class _ConfigurationState extends State<Configuration> {
       appBar: AppBar(
         title: const Text('Configurations'),
         centerTitle: true,
-        backgroundColor: Colors.lightBlue,
+        backgroundColor: Colors.blueGrey,
       ),
       body: Column(
         children: [
