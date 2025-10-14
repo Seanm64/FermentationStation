@@ -1,3 +1,4 @@
+import 'package:fermentation_station/custom/EmptyHomepage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
@@ -57,7 +58,7 @@ class _HomeState extends State<Home> {
 
       body: Column(
         children: <Widget>[
-          SizedBox(height: 10,),
+          SizedBox(height: 10),
           Center(
             child: Text(
               'Check on your brews!',
@@ -67,42 +68,16 @@ class _HomeState extends State<Home> {
             ),
           ),
 
-          SizedBox(height: 20,),
+          SizedBox(height: 20),
 
           // If there are no brews, display area where there should be brews
           Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    color: Colors.blueGrey[100],
-                    borderRadius: BorderRadius.circular(8)
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Spacer(),
-                        Text(
-                          'No brews here yet',
-                          style: GoogleFonts.comicNeue(
-                            fontSize: 20,
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text('Try Adding a brew'),
-                        ),
-                        Spacer()
-                      ],
-                    ),
-                  ),
-                ),
-              )
+            // Check to see if there is any brews, if not display an empty home page
+              child: isThereABrew ? EmptyHomePage()
+                  : EmptyHomePage(),
           ),
 
-          SizedBox(height: 10,),
+          SizedBox(height: 10),
 
         ],
       ),
