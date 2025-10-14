@@ -19,6 +19,10 @@ class EmptyHomePage extends StatelessWidget {
           child: Column(
             children: [
               const Spacer(),
+              Icon(
+                size: 80,
+                Icons.view_comfortable_rounded,
+              ),
               Text(
                 'No brews here yet',
                 style: GoogleFonts.comicNeue(
