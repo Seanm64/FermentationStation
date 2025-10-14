@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:fermentation_station/definitions/hive_boxes.dart';
@@ -6,6 +7,7 @@ import 'package:fermentation_station/models/ingredient_provider.dart';
 import 'package:fermentation_station/models/yeast_provider.dart';
 import 'package:fermentation_station/models/yeast_model.dart';
 import 'package:fermentation_station/models/ingredient_model.dart';
+import 'package:fermentation_station/custom/HomeDrawer.dart';
 
 class Home extends StatefulWidget {
   Home({super.key});
@@ -15,6 +17,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  bool isThereABrew = false;
 
   @override
   void initState() {
@@ -44,57 +48,62 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.blueGrey,
-          title: Text("Home Page"),
+          title: Text("Fermentation Station"),
           centerTitle: true,
       ),
 
       // Drawer
-      drawer: Drawer(
-        width: 200.0,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const SizedBox(
-              height: 150.0,
-              child: DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.blueAccent,
-                ),
-                child: Text('Fermentation Station'),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.wine_bar_outlined),
-              title: const Text('Make A Brew'),
-              onTap: () {
-                // Close the drawer
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/addBrew');
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Configuration'),
-              onTap: () {
-                // Close the drawer
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/config');
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: HomeDrawer(),
 
       body: Column(
         children: <Widget>[
+          SizedBox(height: 10,),
           Center(
-            child: ElevatedButton(
-              child: const Text('Add A Brew'),
-              onPressed: () {
-                Navigator.pushNamed(context, '/addBrew');
-              },
+            child: Text(
+              'Check on your brews!',
+              style: GoogleFonts.lobster(
+                fontSize: 23,
+              ),
             ),
           ),
+
+          SizedBox(height: 20,),
+
+          // If there are no brews, display area where there should be brews
+          Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: Colors.blueGrey[100],
+                    borderRadius: BorderRadius.circular(8)
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Spacer(),
+                        Text(
+                          'No brews here yet',
+                          style: GoogleFonts.comicNeue(
+                            fontSize: 20,
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text('Try Adding a brew'),
+                        ),
+                        Spacer()
+                      ],
+                    ),
+                  ),
+                ),
+              )
+          ),
+
+          SizedBox(height: 10,),
+
         ],
       ),
     );
