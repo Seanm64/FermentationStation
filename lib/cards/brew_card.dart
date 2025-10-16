@@ -9,6 +9,20 @@ class BrewCard extends StatelessWidget {
   final int DaysOld = 26;
   final bool isLatest = true;
 
+  int? _calculateDayDifference(DateTime? startDate, DateTime? endDate) {
+    if (startDate != null && endDate != null) {
+      // Create new DateTime objects with only year, month, and day
+      // to avoid issues with time components affecting the day count.
+      final DateTime startDay = DateTime(startDate.year, startDate.month, startDate.day);
+      final DateTime endDay = DateTime(endDate.year, endDate.month, endDate.day);
+
+      final Duration difference = endDay.difference(startDay);
+      return(difference.inDays);
+    } else {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,7 +72,8 @@ class BrewCard extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(4, 2, 4, 2),
                     child: Text(
-                      '$DaysOld Days Old',
+                      // '${_calculateDayDifference(brewStarted, now)} Days Old',
+                      '${_calculateDayDifference(DateTime(2025, 10, 1), DateTime.now())} Days Old',
                       style: TextStyle(
                         color: Colors.white70,
                       ),
