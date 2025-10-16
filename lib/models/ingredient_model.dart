@@ -2,6 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'ingredient_model.g.dart';
 
+// run... $: flutter pub run build_runner build
 @HiveType(typeId: 2)
 class Ingredient {
   Ingredient({ required this.ingredient_name, required this.sugars_content_percent });

@@ -2,6 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'yeast_model.g.dart';
 
+// run... $: flutter pub run build_runner build
 @HiveType(typeId: 1)
 class Yeast {
   Yeast({ required this.yeast_name, required this.max_abv });
