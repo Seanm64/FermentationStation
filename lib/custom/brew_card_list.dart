@@ -22,9 +22,18 @@ class _BrewCardsListState extends State<BrewCardsList> {
         child: ListView(
           physics: BouncingScrollPhysics(),
           children: [
-            BrewCard(),
-            BrewCard(),
-            BrewCard()
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: BrewCard(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: BrewCard(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: BrewCard(),
+            )
           ],
         ),
       ),
