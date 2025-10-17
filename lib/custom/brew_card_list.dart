@@ -1,4 +1,5 @@
 import 'package:fermentation_station/cards/brew_card.dart';
+import 'package:fermentation_station/models/brew_model.dart';
 import 'package:flutter/material.dart';
 
 
@@ -10,6 +11,11 @@ class BrewCardsList extends StatefulWidget {
 }
 
 class _BrewCardsListState extends State<BrewCardsList> {
+
+  BrewModel brewModel = BrewModel(date_started: DateTime.now(),
+      brew_title: 'Old Fashion Mead',
+      brew_type: BrewType.eMead);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,15 +30,15 @@ class _BrewCardsListState extends State<BrewCardsList> {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: BrewCard(),
+              child: BrewCard(brew_model: brewModel,),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: BrewCard(),
+              child: BrewCard(brew_model: brewModel,),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: BrewCard(),
+              child: BrewCard(brew_model: brewModel,),
             )
           ],
         ),

@@ -50,6 +50,12 @@ enum VolumetricOrWeight {
 @HiveType(typeId: 5)
 class IngredientSet {
 
+  IngredientSet({
+    required this.ingredient,
+    required this.volume_weight,
+    required this.amount,
+  });
+
   @HiveField(0)
   Ingredient ingredient;
 
@@ -63,6 +69,12 @@ class IngredientSet {
 @HiveType(typeId: 6)
 class BrewModel {
 
+  BrewModel({
+    required this.date_started,
+    required this.brew_title,
+    required this.brew_type,
+  });
+
   @HiveField(0)
   DateTime date_started;
 
@@ -73,8 +85,8 @@ class BrewModel {
   BrewType brew_type;
 
   @HiveField(3)
-  Map<DateTime, double> gravity_readings_per_date;
+  Map<DateTime, double> gravity_readings_per_date = {};
 
   @HiveField(4)
-  List<IngredientSet> ingredient_list;
+  List<IngredientSet> ingredient_list = [];
 }
