@@ -1,3 +1,4 @@
+import 'package:fermentation_station/cards/basic_info_card.dart';
 import 'package:flutter/material.dart';
 import 'package:fermentation_station/models/brew_model.dart';
 
@@ -34,6 +35,7 @@ class CheckBrewPage extends StatelessWidget {
 
 
           // Basic Information
+          BasicInfoCard(brew_model: brew_model),
 
           // Yeast Type
 
