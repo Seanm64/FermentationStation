@@ -53,7 +53,7 @@ class BrewCard extends StatelessWidget {
                 children: [
                   Icon(Icons.wine_bar),
                   Text(
-                    brew_model.brew_type.toString(),
+                    brew_model.brew_type.toDisplayString(),
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,

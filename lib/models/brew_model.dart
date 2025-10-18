@@ -37,13 +37,15 @@ enum VolumetricOrWeight {
   @HiveField(6)
   eLiters,
   @HiveField(7)
-  ePints,
+  eMilliLiters,
   @HiveField(8)
+  ePints,
+  @HiveField(9)
   eQuarts,
 
-  @HiveField(9)
-  eTsp,
   @HiveField(10)
+  eTsp,
+  @HiveField(11)
   eTbsp
 }
 
@@ -89,4 +91,56 @@ class BrewModel {
 
   @HiveField(4)
   List<IngredientSet> ingredient_list = [];
+}
+
+
+// toString method for Volumetric Names
+extension VolumeWeightName on VolumetricOrWeight {
+  String toDisplayString() {
+    switch (this) {
+      case VolumetricOrWeight.ePounds:
+        return 'lbs';
+      case VolumetricOrWeight.eKilograms:
+        return 'kg';
+      case VolumetricOrWeight.eGrams:
+        return 'grams';
+      case VolumetricOrWeight.eGallon:
+        return 'Gallons';
+      case VolumetricOrWeight.eCups:
+        return 'Cups';
+      case VolumetricOrWeight.eFlOz:
+        return 'FlOz';
+      case VolumetricOrWeight.eLiters:
+       return 'L';
+      case VolumetricOrWeight.eMilliLiters:
+        return 'mL';
+      case VolumetricOrWeight.ePints:
+        return 'Pints';
+      case VolumetricOrWeight.eQuarts:
+        return 'Quarts';
+      case VolumetricOrWeight.eTsp:
+        return 'Tsp';
+      case VolumetricOrWeight.eTbsp:
+        return 'Tbsp';
+    }
+  }
+}
+
+
+// toString method for Brew Types
+extension BrewTypeNames on BrewType {
+  String toDisplayString() {
+    switch (this) {
+      case BrewType.eWine:
+        return 'Wine';
+      case BrewType.eMead:
+        return 'Mead';
+      case BrewType.eCider:
+        return 'Cider';
+      case BrewType.eBeer:
+        return 'Beer';
+      case BrewType.eKombucha:
+        return 'Kombucha';
+    }
+  }
 }
