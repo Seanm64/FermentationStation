@@ -1,3 +1,4 @@
+import 'package:fermentation_station/utils/date_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:fermentation_station/custom/custom_icon_button.dart';
 import 'package:fermentation_station/pages/check_brew_page.dart';
@@ -112,7 +113,7 @@ class BrewCard extends StatelessWidget {
                             fontSize: 20,
                           )
                         ),
-                        Text('Started: ...'),
+                        Text('Started: ${DateToString(brew_model.date_started, true)}'),
                         Text('Current 1005, ABV 15.8%'),
                       ],
                     ),
