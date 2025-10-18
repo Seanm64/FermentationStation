@@ -1,36 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:fermentation_station/models/brew_model.dart';
-
-class CustomRow extends StatelessWidget {
-  const CustomRow({
-    super.key,
-    this.leading,
-    this.trailing
-  });
-
-  String? leading = '';
-  String? trailing = '';
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(leading ?? ''),
-        Text(trailing ?? ''),
-      ],
-    );
-  }
-}
-
+import 'package:fermentation_station/custom/custom_card_text_row.dart';
 
 class BasicInfoCard extends StatelessWidget {
   const BasicInfoCard({
     super.key,
-    required this.brew_model,
+    required this.leading_icon,
+    required this.card_title,
+    required this.info_map,
   });
 
-  final BrewModel brew_model;
+  final IconData leading_icon;
+  final String card_title;
+  final Map<String, String> info_map;
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +30,12 @@ class BasicInfoCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(Icons.info_outline, size: 25,),
+                  Icon(leading_icon, size: 25,),
                   SizedBox(width: 10,),
                   Text(
-                    "Brew Information",
+                    card_title,
                     style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 23,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -64,24 +45,19 @@ class BasicInfoCard extends StatelessWidget {
               Divider(
                 color: Colors.black54, // Customize color
                 thickness: 2,      // Customize thickness
-                indent: 3,        // Customize starting indent
-                endIndent: 75,     // Customize ending indent
+                indent: 7,        // Customize starting indent
+                endIndent: 10,     // Customize ending indent
               ),
 
+              SizedBox(height: 5,),
 
-              // Title
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Title'),
-                  Text(brew_model.brew_title),
-                ],
-              ),
-
-              // Start Date
-
-              // Brew Type
-
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: info_map.length,
+                itemBuilder: (context, index) {
+                  String key = info_map.keys.elementAt(index);
+                  return CustomTextRow(leading: key, trailing: info_map[key]);
+              })
 
             ],
           ),

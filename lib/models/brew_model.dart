@@ -1,3 +1,4 @@
+import 'package:fermentation_station/models/yeast_model.dart';
 import 'package:hive/hive.dart';
 
 import 'ingredient_model.dart';
@@ -75,6 +76,7 @@ class BrewModel {
     required this.date_started,
     required this.brew_title,
     required this.brew_type,
+    required this.yeast,
   });
 
   @HiveField(0)
@@ -87,9 +89,12 @@ class BrewModel {
   BrewType brew_type;
 
   @HiveField(3)
-  Map<DateTime, double> gravity_readings_per_date = {};
+  Yeast yeast;
 
   @HiveField(4)
+  Map<DateTime, double> gravity_readings_per_date = {};
+
+  @HiveField(5)
   List<IngredientSet> ingredient_list = [];
 }
 

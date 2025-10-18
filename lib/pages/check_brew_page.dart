@@ -21,28 +21,48 @@ class CheckBrewPage extends StatelessWidget {
           Icon(Icons.more_vert, color: Colors.black87,),
         ],
       ),
-      body: Column(
-        children: [
+      body: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: Column(
+          children: [
 
-          // 3 Staged Widget!!!
-          // IF there are no gravity readings, display a potential gravity reading from ingredients
-          // ELSE IF there is a single gravity reading, display the ingredient's potential & actual potential
-          // ELSE display a chart w/ potential & actual abv w/ both ingredients and actual readings
-
-
-
-          // Warning Area
+            // 3 Staged Widget!!!
+            // IF there are no gravity readings, display a potential gravity reading from ingredients
+            // ELSE IF there is a single gravity reading, display the ingredient's potential & actual potential
+            // ELSE display a chart w/ potential & actual abv w/ both ingredients and actual readings
 
 
-          // Basic Information
-          BasicInfoCard(brew_model: brew_model),
 
-          // Yeast Type
-
-          // Ingredients
+            // Warning Area
 
 
-        ],
+            // Brew Information
+            BasicInfoCard(
+              card_title: 'Brew Information',
+              leading_icon: Icons.info_outline,
+              info_map: {
+                'Title': brew_model.brew_title,
+                'Start Date': brew_model.date_started.toString(),
+                'Brew Type': brew_model.brew_type.toDisplayString(),
+              },
+            ),
+
+            // Yeast Type
+            BasicInfoCard(
+              card_title: 'Yeast Information',
+              leading_icon: Icons.sanitizer_outlined,
+              info_map: {
+                'Type': brew_model.yeast.yeast_name,
+                'Typical ABV amount': '${brew_model.yeast.max_abv.toString()}%',
+              },
+            ),
+
+
+            // Ingredients
+
+
+          ],
+        ),
       ),
 
     );

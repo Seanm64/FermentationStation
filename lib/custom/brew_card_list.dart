@@ -1,5 +1,6 @@
 import 'package:fermentation_station/cards/brew_card.dart';
 import 'package:fermentation_station/models/brew_model.dart';
+import 'package:fermentation_station/models/yeast_model.dart';
 import 'package:flutter/material.dart';
 
 
@@ -12,9 +13,12 @@ class BrewCardsList extends StatefulWidget {
 
 class _BrewCardsListState extends State<BrewCardsList> {
 
-  BrewModel brewModel = BrewModel(date_started: DateTime.now(),
-      brew_title: 'Old Fashion Mead',
-      brew_type: BrewType.eMead);
+  BrewModel brewModel = BrewModel(
+    date_started: DateTime.now(),
+    brew_title: 'Old Fashion Mead',
+    brew_type: BrewType.eMead,
+    yeast: Yeast(yeast_name: 'D26 - Fake Yeast', max_abv: 18.0),
+  );
 
   @override
   Widget build(BuildContext context) {
