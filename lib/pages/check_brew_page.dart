@@ -1,6 +1,7 @@
-import 'package:fermentation_station/cards/basic_info_card.dart';
 import 'package:flutter/material.dart';
 import 'package:fermentation_station/models/brew_model.dart';
+import 'package:fermentation_station/cards/basic_info_card.dart';
+import 'package:fermentation_station/utils/date_to_string.dart';
 
 class CheckBrewPage extends StatelessWidget {
   CheckBrewPage({
@@ -42,7 +43,7 @@ class CheckBrewPage extends StatelessWidget {
               leading_icon: Icons.info_outline,
               info_map: {
                 'Title': brew_model.brew_title,
-                'Start Date': brew_model.date_started.toString(),
+                'Start Date': DateToFullMonthString(brew_model.date_started),
                 'Brew Type': brew_model.brew_type.toDisplayString(),
               },
             ),

@@ -53,6 +53,7 @@ class BasicInfoCard extends StatelessWidget {
 
               ListView.builder(
                 shrinkWrap: true,
+                padding: EdgeInsets.zero,
                 itemCount: info_map.length,
                 itemBuilder: (context, index) {
                   String key = info_map.keys.elementAt(index);

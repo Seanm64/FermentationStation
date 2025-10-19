@@ -14,3 +14,8 @@ String DateToString(DateTime date_time, bool if_american)
   }
   return string_date;
 }
+
+String DateToFullMonthString(DateTime date_time)
+{
+  return DateFormat('MMMM d, yyyy').format(date_time);
+}
