@@ -22,12 +22,21 @@ class _BrewCardsListState extends State<BrewCardsList> {
     pH: 4.5,
     ingredient_list: [
       IngredientSet(ingredient: Ingredient(
-        ingredient_name: 'Fake Ingredient',
+        ingredient_name: 'Carrots',
         sugars_content_percent: 20,
       ),
       volume_weight: VolumetricOrWeight.eGrams,
           amount: 10,
-      )
+      ),
+
+      IngredientSet(ingredient: Ingredient(
+        ingredient_name: 'Honey',
+        sugars_content_percent: 79,
+      ),
+        volume_weight: VolumetricOrWeight.ePounds,
+        amount: 1,
+      ),
+
     ],
   );
 

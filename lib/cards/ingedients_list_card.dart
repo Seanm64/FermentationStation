@@ -50,10 +50,22 @@ class IngedientsListCard extends StatelessWidget {
               ListView.builder(
                   shrinkWrap: true,
                   padding: EdgeInsets.zero,
-                  // itemCount: brew_model.ingredient_list?.length ?? 2,
-                  itemCount: 3,
+                  itemCount: brew_model.ingredient_list?.length ?? 0,
                   itemBuilder: (context, index) {
-                    return Text('data');
+                    if(brew_model.ingredient_list == null) return Text(''); // Null Check
+                    return Container(
+                      child: Row(
+                        children: [
+                          Text(brew_model.ingredient_list![index].amount.toString()),
+                          SizedBox(width: 5,),
+                          Text(brew_model.ingredient_list![index].volume_weight.toDisplayString()),
+                          SizedBox(width: 5,),
+                          Text(
+                            brew_model.ingredient_list![index].ingredient.ingredient_name
+                          ),
+                        ],
+                      ),
+                    );
                   })
 
             ],
