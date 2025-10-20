@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fermentation_station/models/brew_model.dart';
 import 'package:fermentation_station/cards/basic_info_card.dart';
+import 'package:fermentation_station/cards/ingedients_list_card.dart';
 import 'package:fermentation_station/utils/date_to_string.dart';
 
 class CheckBrewPage extends StatelessWidget {
@@ -43,7 +44,7 @@ class CheckBrewPage extends StatelessWidget {
               leading_icon: Icons.info_outline,
               info_map: {
                 'Title': brew_model.brew_title,
-                'Start Date': DateToFullMonthString(brew_model.date_started),
+                'Start Date': DateToFullMonthString(brew_model.date_started, true),
                 'Brew Type': brew_model.brew_type.toDisplayString(),
               },
             ),
@@ -52,14 +53,16 @@ class CheckBrewPage extends StatelessWidget {
             BasicInfoCard(
               card_title: 'Yeast Information',
               leading_icon: Icons.sanitizer_outlined,
-              info_map: {
+              info_map:  {
                 'Type': brew_model.yeast.yeast_name,
                 'Typical ABV amount': '${brew_model.yeast.max_abv.toString()}%',
+                if (brew_model.pH != null) 'pH': brew_model.pH.toString(),
               },
             ),
 
 
             // Ingredients
+            IngedientsListCard(brew_model: brew_model),
 
 
           ],

@@ -1,5 +1,6 @@
 import 'package:fermentation_station/cards/brew_card.dart';
 import 'package:fermentation_station/models/brew_model.dart';
+import 'package:fermentation_station/models/ingredient_model.dart';
 import 'package:fermentation_station/models/yeast_model.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,16 @@ class _BrewCardsListState extends State<BrewCardsList> {
     brew_title: 'Old Fashion Mead',
     brew_type: BrewType.eMead,
     yeast: Yeast(yeast_name: 'D26 - Fake Yeast', max_abv: 18.0),
+    pH: 4.5,
+    ingredient_list: [
+      IngredientSet(ingredient: Ingredient(
+        ingredient_name: 'Fake Ingredient',
+        sugars_content_percent: 20,
+      ),
+      volume_weight: VolumetricOrWeight.eGrams,
+          amount: 10,
+      )
+    ],
   );
 
   @override

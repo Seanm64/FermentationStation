@@ -77,7 +77,11 @@ class BrewModel {
     required this.brew_title,
     required this.brew_type,
     required this.yeast,
-  });
+    this.pH,
+    this.gravity_readings_per_date,
+    this.ingredient_list
+    }
+  );
 
   @HiveField(0)
   DateTime date_started;
@@ -92,10 +96,13 @@ class BrewModel {
   Yeast yeast;
 
   @HiveField(4)
-  Map<DateTime, double> gravity_readings_per_date = {};
+  double? pH = 0.0;
 
   @HiveField(5)
-  List<IngredientSet> ingredient_list = [];
+  Map<DateTime, double>? gravity_readings_per_date = {};
+
+  @HiveField(6)
+  List<IngredientSet>? ingredient_list = [];
 }
 
 
