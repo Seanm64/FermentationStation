@@ -53,17 +53,57 @@ class IngedientsListCard extends StatelessWidget {
                   itemCount: brew_model.ingredient_list?.length ?? 0,
                   itemBuilder: (context, index) {
                     if(brew_model.ingredient_list == null) return Text(''); // Null Check
-                    return Container(
-                      child: Row(
-                        children: [
-                          Text(brew_model.ingredient_list![index].amount.toString()),
-                          SizedBox(width: 5,),
-                          Text(brew_model.ingredient_list![index].volume_weight.toDisplayString()),
-                          SizedBox(width: 5,),
-                          Text(
-                            brew_model.ingredient_list![index].ingredient.ingredient_name
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadiusGeometry.circular(5.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Row(
+                            children: [
+
+                              // Amount
+                              SizedBox(
+                                width: 50,
+                                  child: Text(
+                                    brew_model.ingredient_list![index].amount.toString(),
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                              ),
+                              SizedBox(width: 5,),
+
+                              // Volume / Weight Descriptor
+                              SizedBox(
+                                width: 60,
+                                child: Text(
+                                  brew_model.ingredient_list![index].volume_weight.toDisplayString(),
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 20,),
+
+                              // Ingredient Name
+                              Text(
+                                brew_model.ingredient_list![index].ingredient.ingredient_name,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Spacer(),
+                              Icon(
+                                Icons.more_vert,
+                                size: 25,
+                              )
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     );
                   })
