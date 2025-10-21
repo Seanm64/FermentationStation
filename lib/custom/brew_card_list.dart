@@ -46,7 +46,6 @@ class _BrewCardsListState extends State<BrewCardsList> {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blueGrey[100],
           borderRadius: BorderRadius.circular(8)
         ),
         child: ListView(

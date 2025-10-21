@@ -5,6 +5,7 @@ import 'package:fermentation_station/models/yeast_model.dart';
 import 'package:fermentation_station/models/ingredient_model.dart';
 import 'package:fermentation_station/models/ingredient_provider.dart';
 import 'package:fermentation_station/models/yeast_provider.dart';
+import 'package:fermentation_station/theme_data.dart';
 import 'package:provider/provider.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
@@ -28,6 +29,8 @@ void main() async {
             ChangeNotifierProvider(create: (context) => IngredientProvider()),
           ],
           child: MaterialApp(
+            theme: bright_theme_data,
+            darkTheme: dark_theme_data,
             debugShowCheckedModeBanner: false,
             initialRoute: '/',
             routes: {

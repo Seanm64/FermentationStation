@@ -38,7 +38,7 @@ class BrewCard extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blueGrey[200],
+          color: Theme.of(context).colorScheme.secondary,
           borderRadius: BorderRadius.circular(14),
         ),
         margin: EdgeInsets.all(5),

@@ -48,8 +48,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-          backgroundColor: Colors.blueGrey,
+          backgroundColor: Theme.of(context).colorScheme.primary,
           title: Text("Fermentation Station"),
           centerTitle: true,
       ),
