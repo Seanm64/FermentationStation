@@ -19,6 +19,7 @@ class _BrewCardsListState extends State<BrewCardsList> {
     brew_title: 'Cranberry Apple Cider',
     brew_type: BrewType.eCider,
     yeast: Yeast(yeast_name: "Fleicshmann's Yeast", max_abv: 12.0),
+    initial_gravity_reading: 1.045,
     pH: 4.2,
     ingredient_list: [
       IngredientSet(ingredient: Ingredient(

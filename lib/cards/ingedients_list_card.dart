@@ -56,6 +56,7 @@ class IngedientsListCard extends StatelessWidget {
 
               ListView.builder(
                   shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   padding: EdgeInsets.zero,
                   itemCount: brew_model.ingredient_list?.length ?? 0,
                   itemBuilder: (context, index) {
@@ -65,12 +66,14 @@ class IngedientsListCard extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.grey[300],
-                          borderRadius: BorderRadiusGeometry.circular(5.0),
+                          borderRadius: BorderRadiusGeometry.circular(8.0),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Row(
                             children: [
+
+                              SizedBox(width: 5,),
 
                               // Amount
                               SizedBox(
@@ -104,9 +107,12 @@ class IngedientsListCard extends StatelessWidget {
                                 ),
                               ),
                               Spacer(),
-                              Icon(
-                                Icons.more_vert,
-                                size: 25,
+                              IconButton(
+                                onPressed: () {} ,
+                                icon: Icon(
+                                  Icons.more_vert,
+                                  size: 25,
+                                ),
                               )
                             ],
                           ),

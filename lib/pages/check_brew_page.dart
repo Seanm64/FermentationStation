@@ -1,4 +1,5 @@
 import 'package:fermentation_station/theme_data.dart';
+import 'package:fermentation_station/utils/abv_calulations.dart';
 import 'package:flutter/material.dart';
 import 'package:fermentation_station/models/brew_model.dart';
 import 'package:fermentation_station/cards/basic_info_card.dart';
@@ -12,9 +13,15 @@ class CheckBrewPage extends StatelessWidget {
   });
 
   late BrewModel brew_model;
+  double? estimated_gravity;
+  double? current_abv;
+
 
   @override
   Widget build(BuildContext context) {
+
+  String? estimated_abv = GetAbv(brew_model.initial_gravity_reading, 1.0)?.toStringAsFixed(2);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(brew_model.brew_title),
@@ -29,7 +36,8 @@ class CheckBrewPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(2.0),
-        child: Column(
+        child: ListView(
+          physics: BouncingScrollPhysics(),
           children: [
 
             // 3 Staged Widget!!!
@@ -59,7 +67,7 @@ class CheckBrewPage extends StatelessWidget {
               leading_icon: Icons.sanitizer_outlined,
               info_map:  {
                 'Type': brew_model.yeast.yeast_name,
-                'Typical ABV amount': '${brew_model.yeast.max_abv.toString()}%',
+                'Typical ABV Max': '${brew_model.yeast.max_abv.toString()}%',
                 if (brew_model.pH != null) 'pH': brew_model.pH.toString(),
               },
             ),
@@ -75,7 +83,9 @@ class CheckBrewPage extends StatelessWidget {
                 card_title: 'Gravity Calculations',
                 info_map: {
                   'Original Gravity' : brew_model.initial_gravity_reading?.toString() ?? 'None Supplied',
-                  'Estimated Gravity' : 'TODO: Calcualte estimated Gravity',
+                  'Estimated Gravity' : 'TODO: Calculate estimated Gravity',
+                  'Current ABV' : 'TODO: Calculate Estimated ABV',
+                  'Estimated ABV' : (estimated_abv != null) ? '${estimated_abv}%' : 'N/A',
                 }
             ),
 
