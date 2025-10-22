@@ -31,6 +31,7 @@ void main() async {
           child: MaterialApp(
             theme: bright_theme_data,
             darkTheme: dark_theme_data,
+
             debugShowCheckedModeBanner: false,
             initialRoute: '/',
             routes: {

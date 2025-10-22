@@ -27,6 +27,7 @@ class EmptyHomePage extends StatelessWidget {
                 'No brews here yet',
                 style: GoogleFonts.comicNeue(
                   fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               TextButton(

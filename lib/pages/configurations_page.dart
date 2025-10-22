@@ -71,6 +71,9 @@ class _ConfigurationState extends State<Configuration> {
 
   @override
   Widget build(BuildContext context) {
+
+    final ThemeData themeData = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Configurations'),
@@ -84,15 +87,11 @@ class _ConfigurationState extends State<Configuration> {
             children: [
               Text(
                 'Yeast Strains',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
+                style: themeData.textTheme.labelMedium,
               ),
               Text(
                 'Ingredients',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
+                style: themeData.textTheme.labelMedium,
               ),
             ],
           ),

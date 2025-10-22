@@ -1,3 +1,4 @@
+import 'package:fermentation_station/theme_data.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextRow extends StatelessWidget {
@@ -12,6 +13,7 @@ class CustomTextRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Padding(
       padding: const EdgeInsets.only(top: 2.0),
       child: Row(
@@ -19,20 +21,11 @@ class CustomTextRow extends StatelessWidget {
         children: [
           Text(
             leading ?? '',
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.black,
-            ),
-
+            style: cardText,
           ),
           Text(
             trailing ?? '',
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.blueAccent,
-              fontWeight: FontWeight.bold
-            ),
-
+            style: cardTextBlueBold,
           ),
         ],
       ),

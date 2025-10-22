@@ -34,10 +34,7 @@ class BasicInfoCard extends StatelessWidget {
                   SizedBox(width: 10,),
                   Text(
                     card_title,
-                    style: TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.labelLarge,
                   ),
                 ],
               ),

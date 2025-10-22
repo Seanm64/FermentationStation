@@ -29,6 +29,9 @@ class BrewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final ThemeData themeData = Theme.of(context);
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -55,10 +58,7 @@ class BrewCard extends StatelessWidget {
                   Icon(Icons.wine_bar),
                   Text(
                     brew_model.brew_type.toDisplayString(),
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: themeData.textTheme.labelSmall,
                   ),
                   Spacer(),
                   if(is_latest) Container(
@@ -98,69 +98,65 @@ class BrewCard extends StatelessWidget {
             // Body of card
             Padding(
               padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
 
-                    // Title, Starting Date, ABV
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  // Title, Starting Date, ABV
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        brew_model.brew_title,
+                        style: themeData.textTheme.labelMedium,
+                      ),
+                      Text('Started: ${DateToString(brew_model.date_started, true)}'),
+                      Text('Current 1005, ABV 15.8%'),
+                    ],
+                  ),
+
+
+                  // Picture of drink
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text(
-                          brew_model.brew_title,
-                          style: TextStyle(
-                            fontSize: 20,
-                          )
+                        Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(Icons.info_outline,
+                          size: 60,
+                          color: Colors.black26,),
                         ),
-                        Text('Started: ${DateToString(brew_model.date_started, true)}'),
-                        Text('Current 1005, ABV 15.8%'),
+                        SizedBox(width: 10,),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            CustomIconButton(
+                              onTap: () {},
+                              icon: Icon(Icons.add,
+                                size: 20,
+                              ),
+                            ),CustomIconButton(
+                              onTap: () {},
+                              icon: Icon(Icons.add,
+                                size: 20,),
+                            ),CustomIconButton(
+                              onTap: () {},
+                              icon: Icon(Icons.add,
+                                size: 20,),
+                            ),
+                          ],
+                        )
                       ],
                     ),
-
-
-                    // Picture of drink
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Icon(Icons.info_outline,
-                            size: 60,
-                            color: Colors.black26,),
-                          ),
-                          SizedBox(width: 10,),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              CustomIconButton(
-                                onTap: () {},
-                                icon: Icon(Icons.add,
-                                  size: 20,
-                                ),
-                              ),CustomIconButton(
-                                onTap: () {},
-                                icon: Icon(Icons.add,
-                                  size: 20,),
-                              ),CustomIconButton(
-                                onTap: () {},
-                                icon: Icon(Icons.add,
-                                  size: 20,),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             )
           ],

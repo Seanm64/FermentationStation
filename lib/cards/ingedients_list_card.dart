@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fermentation_station/theme_data.dart';
 import 'package:fermentation_station/models/brew_model.dart';
 
 class IngedientsListCard extends StatelessWidget {
@@ -11,11 +12,14 @@ class IngedientsListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final ThemeData themeData = Theme.of(context);
+
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blueGrey[200],
+          color: COLOR_BLUE_GREY[200],
           borderRadius: BorderRadius.circular(8.0),
         ),
         padding: EdgeInsets.all(8.0),
@@ -30,10 +34,7 @@ class IngedientsListCard extends StatelessWidget {
                   SizedBox(width: 10,),
                   Text(
                     'Ingredients',
-                    style: TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: themeData.textTheme.labelLarge,
                   ),
                 ],
               ),
