@@ -23,6 +23,7 @@ const TextTheme text_theme = TextTheme(
 
 const TextStyle cardText = TextStyle(
   color: Colors.black,
+  fontWeight: FontWeight.w400,
   fontSize: 18,
 );
 const TextStyle cardTextBlueBold = TextStyle(

@@ -36,6 +36,12 @@ class IngedientsListCard extends StatelessWidget {
                     'Ingredients',
                     style: themeData.textTheme.labelLarge,
                   ),
+
+                  Spacer(),
+                  IconButton(
+                    icon: Icon(Icons.add),
+                    onPressed: () {},
+                  ),
                 ],
               ),
 
@@ -108,7 +114,6 @@ class IngedientsListCard extends StatelessWidget {
                       ),
                     );
                   })
-
             ],
           ),
         ),

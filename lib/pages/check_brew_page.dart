@@ -1,3 +1,4 @@
+import 'package:fermentation_station/theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:fermentation_station/models/brew_model.dart';
 import 'package:fermentation_station/cards/basic_info_card.dart';
@@ -18,9 +19,12 @@ class CheckBrewPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(brew_model.brew_title),
         centerTitle: true,
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Theme.of(context).primaryColor,
         actions: [
-          Icon(Icons.more_vert, color: Colors.black87,),
+          IconButton(
+            icon: Icon(Icons.more_vert, color: Colors.black87,),
+            onPressed: () {},
+          ),
         ],
       ),
       body: Padding(
@@ -63,6 +67,17 @@ class CheckBrewPage extends StatelessWidget {
 
             // Ingredients
             IngedientsListCard(brew_model: brew_model),
+
+
+            // Gravity Calculations
+            BasicInfoCard(
+                leading_icon: Icons.table_bar_outlined,
+                card_title: 'Gravity Calculations',
+                info_map: {
+                  'Original Gravity' : brew_model.initial_gravity_reading?.toString() ?? 'None Supplied',
+                  'Estimated Gravity' : 'TODO: Calcualte estimated Gravity',
+                }
+            ),
 
 
           ],

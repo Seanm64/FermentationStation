@@ -16,25 +16,33 @@ class _BrewCardsListState extends State<BrewCardsList> {
 
   BrewModel brewModel = BrewModel(
     date_started: DateTime.now(),
-    brew_title: 'Old Fashion Mead',
-    brew_type: BrewType.eMead,
-    yeast: Yeast(yeast_name: 'D26 - Fake Yeast', max_abv: 18.0),
-    pH: 4.5,
+    brew_title: 'Cranberry Apple Cider',
+    brew_type: BrewType.eCider,
+    yeast: Yeast(yeast_name: "Fleicshmann's Yeast", max_abv: 12.0),
+    pH: 4.2,
     ingredient_list: [
       IngredientSet(ingredient: Ingredient(
-        ingredient_name: 'Carrots',
-        sugars_content_percent: 20,
+        ingredient_name: 'Cranberry Juice',
+        sugars_content_percent: 55,
       ),
-      volume_weight: VolumetricOrWeight.eGrams,
-          amount: 10,
+      volume_weight: VolumetricOrWeight.eGallon,
+          amount: 0.5,
       ),
 
       IngredientSet(ingredient: Ingredient(
-        ingredient_name: 'Honey',
+        ingredient_name: 'Apple Juice',
         sugars_content_percent: 79,
       ),
-        volume_weight: VolumetricOrWeight.ePounds,
-        amount: 1,
+        volume_weight: VolumetricOrWeight.eGallon,
+        amount: 0.5,
+      ),
+
+      IngredientSet(ingredient: Ingredient(
+        ingredient_name: 'Baking Soda',
+        sugars_content_percent: 0,
+      ),
+        volume_weight: VolumetricOrWeight.eTsp,
+        amount: 1.0,
       ),
 
     ],
